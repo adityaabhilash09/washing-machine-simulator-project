@@ -76,12 +76,25 @@ Please refer to the following PDFs provided in this repository:
 
 Read the PDFs carefully before implementing the missing functions.
 
+## Timer Behavior
+
+The washing machine uses a simulated timer:
+
+- **1 real second = 1 simulated minute**
+- Heavy Mode = 45 simulated minutes
+- Normal Mode = 30 simulated minutes
+- Light Mode = 20 simulated minutes
+- The timer runs automatically in the background while the machine is washing.
+- The remaining time can be viewed using **Show Status**.
+- The timer does not print a countdown every second.
+- When the timer reaches zero, the washing cycle completes and a completion message is displayed.
+
 ## Compilation
 
 Using GCC:
 
 ```bash
-gcc main.c machine.c input.c display.c timer.c power.c -o washing_machine
+gcc -Wall -Wextra -std=c11 -pthread main.c machine.c input.c display.c timer.c power.c -o washing_machine.exe
 ```
 
 ## Run
