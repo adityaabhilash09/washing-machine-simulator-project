@@ -2,7 +2,6 @@
 #include "timer.h"
 #include <stdio.h>
 
-
 void machine_init(WashingMachine *machine)
 {
     machine->mode = MODE_NONE;
@@ -12,6 +11,7 @@ void machine_init(WashingMachine *machine)
     machine->remaining_time = 0;
     machine->detergent_present = 0;
     machine->start_requested = 0;
+    machine->timer_running = 0;
 }
 
 

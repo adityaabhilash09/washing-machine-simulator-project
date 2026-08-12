@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <pthread.h>
 
 #include "machine.h"
 #include "input.h"
@@ -6,13 +7,27 @@
 #include "timer.h"
 #include "power.h"
 
-
 int main(void)
 {
     WashingMachine machine;
     UserInput input;
 
+    pthread_t timer_thread_id;
+
     machine_init(&machine);
+
+    /*
+     * Start the timer thread.
+     *
+     * The timer thread runs independently from
+     * the user input loop.
+     */
+    pthread_create(
+        &timer_thread_id,
+        NULL,
+        timer_thread,
+        &machine
+    );
 
     printf("Washing Machine Simulator Started.\n");
 
@@ -117,18 +132,7 @@ int main(void)
 
                 return 0;
         }
-
-
-        /*
-         * One iteration represents one simulated
-         * unit of washing time.
-         */
-        if (machine.state == RUNNING)
-        {
-            timer_tick(&machine);
-        }
     }
-
 
     return 0;
 }

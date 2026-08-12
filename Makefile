@@ -1,6 +1,6 @@
 CC = gcc
 
-CFLAGS = -Wall -Wextra -std=c11
+CFLAGS = -Wall -Wextra -std=c11 -pthread
 
 TARGET = washing_machine
 
@@ -11,10 +11,8 @@ SRC = main.c \
       timer.c \
       power.c
 
-
 $(TARGET): $(SRC)
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
 
-
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) $(TARGET).exe

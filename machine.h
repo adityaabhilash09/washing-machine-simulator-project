@@ -35,6 +35,7 @@ typedef struct
     int remaining_time;
     int detergent_present;
     int start_requested;
+    int timer_running;
 
 } WashingMachine;
 
