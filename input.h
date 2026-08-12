@@ -1,0 +1,24 @@
+#ifndef INPUT_H
+#define INPUT_H
+
+typedef enum
+{
+    INPUT_START = 1,
+    INPUT_ABORT,
+    INPUT_SELECT_HEAVY,
+    INPUT_SELECT_NORMAL,
+    INPUT_SELECT_LIGHT,
+    INPUT_DOOR_OPEN,
+    INPUT_DOOR_CLOSE,
+    INPUT_DETERGENT_FILLED,
+    INPUT_POWER_OFF,
+    INPUT_POWER_ON,
+    INPUT_SHOW_STATUS,
+    INPUT_EXIT,
+    INPUT_INVALID
+} UserInput;
+
+
+UserInput get_user_input(void);
+
+#endif
