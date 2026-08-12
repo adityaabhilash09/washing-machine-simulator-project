@@ -1,5 +1,56 @@
 # Washing Machine Simulator — Lab 1
 
+## System Setup
+
+The following software is required:
+
+- **Visual Studio Code**
+- **C/C++ extension for VS Code**
+- **MSYS2**
+- **GCC compiler**
+- **Make**
+
+### 1. Install VS Code
+
+Install Visual Studio Code and install the **C/C++** extension from the Extensions panel.
+
+### 2. Install MSYS2
+
+Install MSYS2 and open the **MSYS2 UCRT64** terminal.
+
+Install the required compiler and build tools using:
+
+```bash
+pacman -Syu
+```
+
+If MSYS2 asks you to close and reopen the terminal, do so and continue the update.
+
+Then install GCC and Make:
+```bash
+pacman -S --needed mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-make
+```
+
+### 3. Verify the Installation
+
+Open the **MSYS2 UCRT64** terminal and run:
+```bash
+gcc --version
+```
+
+and:
+```bash
+make --version
+```
+
+Both commands should display the installed versions.
+
+### 4. Open the Project
+
+Clone or download this repository and open the project folder in VS Code.
+
+All compilation commands should be run from the project directory using the MSYS2 UCRT64 terminal.
+
 ## Objective
 
 Implement the missing functions in the washing machine simulator using C.
