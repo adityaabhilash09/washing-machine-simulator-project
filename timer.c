@@ -39,10 +39,11 @@ void timer_tick(WashingMachine *machine)
 
         machine->timer_running = 0;
         machine->state = IDLE;
+        machine->mode = MODE_NONE;
         machine->door_status = DOOR_CLOSED;
         machine->detergent_present = 0;
 
-        printf("*** Washing cycle completed. ***");
+        printf("\n *** Washing cycle completed. *** \n");
 
     }
 }

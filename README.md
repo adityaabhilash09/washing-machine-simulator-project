@@ -58,11 +58,11 @@ of whether the user is typing something into the menu at that moment.
 ```
 washing-machine-simulator-project/
 ├── main.c                          # Entry point: menu loop + thread creation
-├── machine.c / machine.h           # Machine state, mode, door, detergent logic (my TODOs)
-├── timer.c   / timer.h             # Duration lookup, tick logic, background timer thread (my TODOs)
-├── power.c   / power.h             # Power-failure / power-restore logic (my TODOs)
-├── input.c   / input.h             # Reads and validates menu choices (provided, complete)
-├── display.c / display.h           # Prints machine status / messages (provided, complete)
+├── machine.c / machine.h           # Machine state, mode, door, detergent logic 
+├── timer.c   / timer.h             # Duration lookup, tick logic, background timer thread
+├── power.c   / power.h             # Power-failure / power-restore logic 
+├── input.c   / input.h             # Reads and validates menu choices
+├── display.c / display.h           # Prints machine status / messages
 ├── Makefile                        # Build rules
 ├── Washing Machine Simulator.pdf           # Problem statement
 ├── Washing_Machine_Simulator_PPT_Lab1.pdf  # Slides with edge cases / requirements
@@ -156,9 +156,7 @@ assumes as a starting point.
 - **Allowed:** only while `state == IDLE` and `mode != MODE_NONE`.
 - **Edge case — power failure:** if the machine is in `POWER_FAILURE`, mode
   selection is explicitly blocked with its own message
-  (*"There is power failure. Mode cannot be changed."*) instead of falling
-  through to the generic "machine is running" message — this makes the
-  reason for the rejection clearer to the user.
+  (*"There is power failure. Mode cannot be changed."*).
 - **Edge case — mid-cycle:** any other non-`IDLE` state (`RUNNING`,
   `WAITING_FOR_DETERGENT`) rejects the change with
   *"Mode cannot be changed while the machine is running."*
@@ -236,7 +234,7 @@ Straightforward lookup table required by the spec:
   considered complete — the function resets the machine straight to `IDLE`
   (mode/detergent cleared implicitly via the state reset pattern used
   elsewhere), unlocks the door back to `CLOSED`, clears
-  `detergent_present`, stops `timer_running`, and prints a completion
+  `detergent_present`, stops `timer_running`, mode changed to `MODE_NONE` and prints a completion
   banner. This is what actually realizes the *"ready for a new cycle"*
   requirement mentioned above — the FSM never has to sit in a separate
   `COMPLETED` state waiting for acknowledgment.
